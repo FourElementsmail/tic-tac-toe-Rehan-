@@ -1,6 +1,10 @@
 let playerIcon1 = "";
 let playerIcon2 = "";
+let player1Wins = 0;
+let player2Wins = 0;
 
+let player1ClickData = [];
+let player2ClickData = [];
 function checkValues(data) {
   const player1 = document.getElementById("player1");
   const player2 = document.getElementById("player2");
@@ -14,22 +18,26 @@ function checkValues(data) {
   const l2 = document.getElementById("l2");
   const l3 = document.getElementById("l3");
 
+  let winimg = document.getElementById("mainimg");
+  winimg.style.zIndex = 999999;
+
   const body = document.body;
   const playerNumber = document.getElementById("playernumber");
   const win = document.getElementById("win");
+  win.style.color = "green";
+  win.style.fontWeight = "bold";
+  win.style.fontSize = "30px";
 
   const icons = "playerIcons/";
 
-  let clicked1 = 0;
-  let clicked2 = 0;
-
-  let clickdata1 = [];
-  let clickdata2 = [];
+  if (playerNumber.innerHTML == "1") {
+    player1ClickData.push(data.id);
+  } else {
+    player2ClickData.push(data.id);
+  }
   if (data.innerHTML != "" || win.innerHTML != "") {
     return;
   } else {
-    console.log(playerIcon1);
-    console.log(playerIcon2);
     if (playerNumber.innerHTML == "1") {
       if (playerIcon1 == "") {
         data.innerHTML = `<img src="${icons}1.jpg" alt="" />`;
@@ -51,6 +59,12 @@ function checkValues(data) {
       f1.innerHTML == f3.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       c1.innerHTML != "" &&
@@ -60,6 +74,12 @@ function checkValues(data) {
       c1.innerHTML == c3.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       l1.innerHTML != "" &&
@@ -69,6 +89,12 @@ function checkValues(data) {
       l1.innerHTML == l3.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       f1.innerHTML != "" &&
@@ -78,6 +104,12 @@ function checkValues(data) {
       f1.innerHTML == l1.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       f2.innerHTML != "" &&
@@ -87,6 +119,12 @@ function checkValues(data) {
       f2.innerHTML == l2.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       f3.innerHTML != "" &&
@@ -96,6 +134,12 @@ function checkValues(data) {
       f3.innerHTML == l3.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       f1.innerHTML != "" &&
@@ -105,6 +149,12 @@ function checkValues(data) {
       f1.innerHTML == l3.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
     } else if (
       f3.innerHTML != "" &&
@@ -114,25 +164,62 @@ function checkValues(data) {
       f3.innerHTML == l1.innerHTML
     ) {
       win.innerHTML = `Player ${playerNumber.innerHTML} win`;
+      if (playerNumber.innerHTML == "1") {
+        player1Wins++;
+      } else {
+        player2Wins++;
+      }
+      winimg.src = `gamewin.gif`;
       return;
+    }
+    if (player1ClickData.length == 2) {
+      let firstValue = player1ClickData[0];
+      document.getElementById(firstValue).style.opacity = "0.7";
+    }
+    if (player1ClickData.length == 3) {
+      let secondValue = player1ClickData[1];
+      let firstValue = player1ClickData[0];
+      document.getElementById(firstValue).style.opacity = "0.4";
+      document.getElementById(secondValue).style.opacity = "0.7";
+    }
+    if (player1ClickData.length == 4) {
+      let firstValue = player1ClickData[0];
+      let thirdValue = player1ClickData[2];
+      let secondValue = player1ClickData[1];
+      document.getElementById(firstValue).innerHTML = "";
+      document.getElementById(secondValue).style.opacity = "0.4";
+      document.getElementById(thirdValue).style.opacity = "0.7";
+      player1ClickData.shift();
+    }
+
+    if (player2ClickData.length == 2) {
+      let firstValue = player2ClickData[0];
+      document.getElementById(firstValue).style.opacity = "0.7";
+    }
+    if (player2ClickData.length == 3) {
+      let secondValue = player2ClickData[1];
+      let firstValue = player2ClickData[0];
+      document.getElementById(firstValue).style.opacity = "0.4";
+      document.getElementById(secondValue).style.opacity = "0.7";
+    }
+    if (player2ClickData.length == 4) {
+      let firstValue = player2ClickData[0];
+      let thirdValue = player2ClickData[2];
+      let secondValue = player2ClickData[1];
+      document.getElementById(firstValue).innerHTML = "";
+      document.getElementById(secondValue).style.opacity = "0.4";
+      document.getElementById(thirdValue).style.opacity = "0.7";
+      player2ClickData.shift();
     }
 
     if (playerNumber.innerHTML == "1") {
       playerNumber.innerHTML = "2";
       player1.removeAttribute("class");
       player2.setAttribute("class", "player2");
-      // clicked1++;
-      // if (clicked1 > 3) {
-      // }
     } else {
       playerNumber.innerHTML = "1";
       player2.removeAttribute("class");
       player1.setAttribute("class", "player1");
-      // clicked2++;
-      // console.log(clicked2);
-      // if (clicked2 > 3) {
-      // }
-      // body.style.backgroundColor = "green";
       return true;
     }
   }
@@ -148,14 +235,26 @@ function restart() {
 
   const win = document.getElementById("win");
 
+  const winimg = document.getElementById("mainimg");
+
   allImg.forEach((img) => {
     img.innerHTML = "";
+    img.style.opacity = "1";
   });
 
   playerNumber.innerHTML = "1";
   player2.removeAttribute("class");
   player1.setAttribute("class", "player1");
   win.innerHTML = "";
+
+  let name = getCookie("border");
+  winimg.src = `borderstyle/${name}`;
+
+  player1ClickData = new Array();
+  player2ClickData = new Array();
+
+  document.getElementById("gamewin1").innerHTML = player1Wins;
+  document.getElementById("gamewin2").innerHTML = player2Wins;
 }
 
 function start() {
@@ -168,8 +267,9 @@ function start() {
 
 function reset() {
   window.location.reload();
-  deleteCookie("icon1");
-  deleteCookie("icon2");
+
+  player1Wins = 0;
+  player2Wins = 0;
 }
 
 function createCookie(name, value, days) {
@@ -210,6 +310,7 @@ function updateBorder(name) {
   const img = document.getElementById("mainimg");
   img.src = `borderstyle/${name}`;
   img.style.pointerEvents = "none";
+  updateCookie("border", name);
 }
 
 function openModal(id) {
@@ -237,12 +338,11 @@ function openModal(id) {
 function getImage1(name) {
   document.getElementById("selectIconmodal1").style.display = "none";
   playerIcon1 = name;
-
-  console.log(playerIcon1);
 }
 
 function getImage2(name) {
   document.getElementById("selectIconmodal2").style.display = "none";
   playerIcon2 = name;
-  console.log(playerIcon2);
 }
+createCookie("border", `b1.webp`, 365);
+// console.log(player1Wins);

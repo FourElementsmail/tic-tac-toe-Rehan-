@@ -103,14 +103,14 @@
       width: inherit;
       height: inherit;
     }
-    #restart{
+    #restart {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 20px;
       gap: 10px;
     }
-    #restart-btn{
+    #restart-btn {
       padding: 10px 20px;
       border: 2px solid transparent;
       outline: 2px solid rgb(131, 66, 66);
@@ -119,19 +119,19 @@
       color: white;
       user-select: none !important;
     }
-    #restart-btn:active{
+    #restart-btn:active {
       background-color: rgb(153, 136, 136);
       color: black;
       outline: 2px solid transparent;
       box-shadow: inset 3px 3px 2px 1px rgb(36, 36, 36);
     }
-    #restart-btn h3{
+    #restart-btn h3 {
       user-select: none;
     }
     #game {
       display: none;
     }
-    #optionSet1{
+    #optionSet1 {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -139,7 +139,7 @@
       color: white;
       padding-top: 100px;
     }
-    #start-btn{
+    #start-btn {
       padding: 8px 16px;
       border: 2px solid transparent;
       outline: 2px solid rgb(172, 169, 169);
@@ -149,10 +149,11 @@
         90deg,
         rgba(198, 79, 183, 1) 0%,
         rgba(255, 0, 44, 1) 100%
-      );font-size: large;
+      );
+      font-size: large;
       margin: 25px 0px;
     }
-    #optionSet2{
+    #optionSet2 {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -160,14 +161,14 @@
       color: white;
       padding: 10px 0px;
     }
-    #name{
+    #name {
       display: flex;
       justify-content: space-around;
       align-items: center;
       gap: 10px;
       margin: 25px 0px;
     }
-    #name input{
+    #name input {
       width: 35%;
       padding: 6px 10px;
       font-size: 15px;
@@ -175,21 +176,21 @@
       border: 2px solid transparent;
       border-radius: 10px;
     }
-    #selector{
+    #selector {
       display: flex;
       justify-content: space-around;
       align-items: center;
       gap: 10px;
       margin: 25px 0px;
     }
-    #selector select{
+    #selector select {
       padding: 6px 10px;
       font-size: 15px;
       font-weight: bold;
       border: 2px solid transparent;
       border-radius: 10px;
     }
-    #Icon-selector1{
+    #Icon-selector1 {
       width: 90px;
       padding: 6px 10px;
       font-size: 15px;
@@ -199,7 +200,7 @@
       background-color: aliceblue;
       color: black;
     }
-    #Icon-selector2{
+    #Icon-selector2 {
       width: 90px;
       padding: 6px 10px;
       font-size: 15px;
@@ -209,7 +210,7 @@
       background-color: aliceblue;
       color: black;
     }
-    #border-selector{
+    #border-selector {
       width: 90px;
       padding: 6px 10px;
       font-size: 15px;
@@ -217,7 +218,7 @@
       border: 2px solid transparent;
       border-radius: 10px;
     }
-    #selectIconmodal1{
+    #selectIconmodal1 {
       display: none;
       width: 90%;
       height: 250px;
@@ -229,38 +230,40 @@
       border-radius: 20px;
       box-shadow: 3px 3px 3px 3px rgb(167, 165, 165);
     }
-    #selectIconmodal2{
+    #selectIconmodal2 {
       display: none;
       width: 90%;
       height: 250px;
       position: absolute;
       top: 200px;
       left: 5%;
-      background-color:  rgb(82, 80, 80);
+      background-color: rgb(82, 80, 80);
     }
-    #showplayerIcons1{
+    #showplayerIcons1 {
       margin: 20px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
-    #showplayerIcons2{
+    #showplayerIcons2 {
       margin: 20px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
-    #showplayerIcons1 img{
+    #showplayerIcons1 img {
       width: 50px;
       height: 50px;
     }
-    #showplayerIcons2 img{
+    #showplayerIcons2 img {
       width: 50px;
       height: 50px;
     }
-    footer{
+    footer {
       color: aliceblue;
       font-size: 20px;
       position: absolute;
@@ -270,101 +273,120 @@
       text-align: center;
       padding: 10px 0;
     }
+    #gameswin{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: aliceblue;
+      font-weight: bold;
+    }
   </style>
   <body>
     <div id="menu">
       <div id="optionSet1">
-      <h1>Tic Tac Toe</h1>
-      <span id="start-btn" onclick="start()">Start Game</span>
+        <h1>Tic Tac Toe</h1>
+        <span id="start-btn" onclick="start()">Start Game</span>
       </div>
-      <hr>
+      <hr />
       <div id="optionSet2">
         <h1>Options</h1>
         <div id="name">
-          <input type="text" oninput="updateCookie(`player1`,this.value)" name="playerName1" id="playerName1">
-          <input type="text" oninput="updateCookie(`player2`,this.value)" name="playerName2" id="playerName2">
+          <input
+            type="text"
+            oninput="updateCookie(`player1`,this.value)"
+            name="playerName1"
+            id="playerName1"
+          />
+          <input
+            type="text"
+            oninput="updateCookie(`player2`,this.value)"
+            name="playerName2"
+            id="playerName2"
+          />
         </div>
         <div id="selector">
-        <span name="icon" id="Icon-selector1" onclick="openModal(1)">Icon 1</span> 
-        <span name="icon" id="Icon-selector2" onclick="openModal(2)">Icon 2</span> 
-        <select name="border" id="border-selector" onchange="updateBorder(this.value)">
-          <option value="b1.webp">Red</option>
-          <option value="b2.webp">Yellow</option>
-          <option value="b4.webp">purple</option>
-          <option value="b3.webp">Blue</option>
-        </select> 
+          <span name="icon" id="Icon-selector1" onclick="openModal(1)"
+            >Icon 1</span
+          >
+          <span name="icon" id="Icon-selector2" onclick="openModal(2)"
+            >Icon 2</span
+          >
+          <select
+            name="border"
+            id="border-selector"
+            onchange="updateBorder(this.value)"
+          >
+            <option value="b1.webp">Red</option>
+            <option value="b2.webp">Yellow</option>
+            <option value="b4.webp">purple</option>
+            <option value="b3.webp">Blue</option>
+          </select>
         </div>
       </div>
     </div>
 
     <div id="game">
-    <header>
-      <h1>Tic Tac Toe</h1>
-      <h3 id="turn">Turn Player: <span id="playernumber">1</span></h3>
-      <h4><span id="win"></span></h4>
-    </header>
+      <header>
+        <h1>Tic Tac Toe</h1>
+        <h3 id="turn">Turn Player: <span id="playernumber">1</span></h3>
+        <h4><span id="win"></span></h4>
+      </header>
 
-    <div class="playerstat">
-      <div id="player1" class="player1">player 1</div>
-      <div id="player2" class="">player 2</div>
-    </div>
+      <div id="gameswin">
+        <div id="">Total Won (<span id="gamewin1">0</span>)</div>
+        <div id="">Total Won (<span id="gamewin2">0</span>)</div>
+      </div>
 
-    <main id="main">
-      <img src="borderstyle/b1.webp" id="mainimg" />
-      <div id="f1" class="all-img" onclick="checkValues(this)"></div>
-      <div id="c1" class="all-img" onclick="checkValues(this)"></div>
-      <div id="l1" class="all-img" onclick="checkValues(this)"></div>
-      <div id="f2" class="all-img" onclick="checkValues(this)"></div>
-      <div id="c2" class="all-img" onclick="checkValues(this)"></div>
-      <div id="l2" class="all-img" onclick="checkValues(this)"></div>
-      <div id="f3" class="all-img" onclick="checkValues(this)"></div>
-      <div id="c3" class="all-img" onclick="checkValues(this)"></div>
-      <div id="l3" class="all-img" onclick="checkValues(this)"></div>
-    </main>
-    <div id="restart">
-      <span id="restart-btn" onclick="reset()"><h3>Menu</h3></span>
-      <span id="restart-btn" onclick="restart()"><h3>Restart</h3></span>
-    </div>
+      <div class="playerstat">
+        <div id="player1" class="player1">player 1</div>
+        <div id="player2" class="">player 2</div>
+      </div>
+
+      <main id="main">
+        <img src="borderstyle/b1.webp" id="mainimg" />
+        <div id="f1" class="all-img" onclick="checkValues(this)"></div>
+        <div id="c1" class="all-img" onclick="checkValues(this)"></div>
+        <div id="l1" class="all-img" onclick="checkValues(this)"></div>
+        <div id="f2" class="all-img" onclick="checkValues(this)"></div>
+        <div id="c2" class="all-img" onclick="checkValues(this)"></div>
+        <div id="l2" class="all-img" onclick="checkValues(this)"></div>
+        <div id="f3" class="all-img" onclick="checkValues(this)"></div>
+        <div id="c3" class="all-img" onclick="checkValues(this)"></div>
+        <div id="l3" class="all-img" onclick="checkValues(this)"></div>
+      </main>
+      <div id="restart">
+        <span id="restart-btn" onclick="reset()"><h3>Menu</h3></span>
+        <span id="restart-btn" onclick="restart()"><h3>Restart</h3></span>
+      </div>
     </div>
 
     <div id="selectIconmodal1">
       <div id="showplayerIcons1">
-        <img src="playerIcons/1.jpg" class="iconImages1" onclick="getImage1(this.name)" name="1.jpg" alt=""
-          id="playerIcon1" />
-        <img src="playerIcons/2.jpg" class="iconImages1" onclick="getImage1(this.name)" name="2.jpg" alt=""
-          id="playerIcon1" />
-        <img src="playerIcons/3.jpg" class="iconImages1" onclick="getImage1(this.name)" name="3.jpg" alt=""
-          id="playerIcon1" />
-        <img src="playerIcons/4.jpg" class="iconImages1" onclick="getImage1(this.name)" name="4.jpg" alt=""
-          id="playerIcon1" />
-        <img src="playerIcons/5.jpg" class="iconImages1" onclick="getImage1(this.name)" name="5.jpg" alt=""
-          id="playerIcon1" />
-        <img src="playerIcons/6.jpg" class="iconImages1" onclick="getImage1(this.name)" name="6.jpg" alt=""
-          id="playerIcon1" />
-        <img src="playerIcons/7.jpg" class="iconImages1" onclick="getImage1(this.name)" name="7.jpg" alt=""
-          id="playerIcon1" />
+        <img src="playerIcons/1.jpg" class="iconImages1" onclick="getImage1(this.name)" name="1.jpg" alt="" id="playerIcon1"/>
+        <img src="playerIcons/2.jpg" class="iconImages1" onclick="getImage1(this.name)" name="2.jpg" alt="" id="playerIcon1"/>
+        <img src="playerIcons/3.jpg" class="iconImages1" onclick="getImage1(this.name)" name="3.jpg" alt="" id="playerIcon1"/>
+        <img src="playerIcons/4.jpg" class="iconImages1" onclick="getImage1(this.name)" name="4.jpg" alt="" id="playerIcon1"/>
+        <img src="playerIcons/5.jpg" class="iconImages1" onclick="getImage1(this.name)" name="5.jpg" alt="" id="playerIcon1"/>
+        <img src="playerIcons/6.jpg" class="iconImages1" onclick="getImage1(this.name)" name="6.jpg" alt="" id="playerIcon1"/>
+        <img src="playerIcons/7.jpg" class="iconImages1" onclick="getImage1(this.name)" name="7.jpg" alt="" id="playerIcon1"/>
       </div>
     </div>
     <div id="selectIconmodal2">
       <div id="showplayerIcons2">
-        <img src="playerIcons/1.jpg" class="iconImages2" onclick="getImage2(this.name)" name="1.jpg" alt=""
-          id="playerIcon2" />
-        <img src="playerIcons/2.jpg" class="iconImages2" onclick="getImage2(this.name)" name="2.jpg" alt=""
-          id="playerIcon2" />
-        <img src="playerIcons/3.jpg" class="iconImages2" onclick="getImage2(this.name)" name="3.jpg" alt=""
-          id="playerIcon2" />
-        <img src="playerIcons/4.jpg" class="iconImages2" onclick="getImage2(this.name)" name="4.jpg" alt=""
-          id="playerIcon2" />
-        <img src="playerIcons/5.jpg" class="iconImages2" onclick="getImage2(this.name)" name="5.jpg" alt=""
-          id="playerIcon2" />
-        <img src="playerIcons/6.jpg" class="iconImages2" onclick="getImage2(this.name)" name="6.jpg" alt=""
-          id="playerIcon2" />
-        <img src="playerIcons/7.jpg" class="iconImages2" onclick="getImage2(this.name)" name="7.jpg" alt=""
-          id="playerIcon2" />
+        <img src="playerIcons/1.jpg" class="iconImages2" onclick="getImage2(this.name)" name="1.jpg" alt="" id="playerIcon2"/>
+        <img src="playerIcons/2.jpg" class="iconImages2" onclick="getImage2(this.name)" name="2.jpg" alt="" id="playerIcon2"/>
+        <img src="playerIcons/3.jpg" class="iconImages2" onclick="getImage2(this.name)" name="3.jpg" alt="" id="playerIcon2"/>
+        <img src="playerIcons/4.jpg" class="iconImages2" onclick="getImage2(this.name)" name="4.jpg" alt="" id="playerIcon2"/>
+        <img src="playerIcons/5.jpg" class="iconImages2" onclick="getImage2(this.name)" name="5.jpg" alt="" id="playerIcon2"/>
+        <img src="playerIcons/6.jpg" class="iconImages2" onclick="getImage2(this.name)" name="6.jpg" alt="" id="playerIcon2"/>
+        <img src="playerIcons/7.jpg" class="iconImages2" onclick="getImage2(this.name)" name="7.jpg" alt="" id="playerIcon2"/>
       </div>
     </div>
 
-    <footer><hr> Made by Four Elements [A.Rehan]</footer>
+    <footer>
+      <hr />
+      Made by Four Elements [A.Rehan]
+    </footer>
   </body>
   <script>
     let screenwidth = window.innerWidth; // get device width
@@ -385,8 +407,6 @@
       div.style.width = width / innerDivWidth + "px";
       div.style.height = width / innerDivWidth + "px";
     });
-
-   
   </script>
 
   <script src="main.js"></script>
