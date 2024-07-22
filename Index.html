@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic tac toe</title>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      user-select: none;
+    }
+    body {
+      background-color: rgb(53, 53, 53);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden !important;
+    }
+    header {
+      padding-top: 20px;
+      margin-bottom: 50px;
+      color: aliceblue;
+    }
+    header h1,
+    header h4,
+    header h3 {
+      text-align: center;
+    }
+
+    .playerstat {
+      display: flex;
+      margin-bottom: 10px;
+      justify-content: space-around;
+      align-items: center;
+      width: 100vw !important;
+    }
+    .playerstat div {
+      font-size: 20px;
+      color: white;
+      width: fit-content;
+      padding: 10px 12px;
+      border-radius: 50px;
+      box-shadow: inset 1px 3px 3px rgba(255, 255, 255, 0.75);
+    }
+    .player1 {
+      background: rgb(255, 111, 0);
+      background: linear-gradient(
+        90deg,
+        rgba(255, 111, 0, 1) 0%,
+        rgba(255, 222, 0, 1) 100%
+      );
+    }
+    .deactive1 {
+      background: rgb(255, 111, 0);
+      background: linear-gradient(
+        90deg,
+        rgb(37, 37, 37) 0%,
+        rgb(75, 75, 75) 100%
+      );
+    }
+    .player2 {
+      background: rgb(198, 79, 183);
+      background: linear-gradient(
+        90deg,
+        rgba(198, 79, 183, 1) 0%,
+        rgba(255, 0, 44, 1) 100%
+      );
+    }
+    .deactive2 {
+      background: rgb(198, 79, 183);
+      background: linear-gradient(
+        90deg,
+        rgb(75, 75, 75) 0%,
+        rgb(37, 37, 37) 100%
+      );
+    }
+    #main {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      margin: auto !important;
+      background-color: aliceblue;
+      justify-content: space-around;
+      -webkit-box-shadow: 0px 0px 46px 0px rgba(255, 255, 255, 0.31);
+      -moz-box-shadow: 0px 0px 46px 0px rgba(255, 255, 255, 0.31);
+      box-shadow: 0px 0px 46px 0px rgba(255, 255, 255, 0.31);
+    }
+    #main div {
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+    }
+    #mainimg {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: inherit;
+      height: inherit;
+      pointer-events: none;
+    }
+    #main div img {
+      width: inherit;
+      height: inherit;
+    }
+    #restart{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    #restart-btn{
+      padding: 10px 20px;
+      border: 2px solid transparent;
+      outline: 2px solid rgb(131, 66, 66);
+      border-radius: 30px;
+      background-color: rgb(19, 14, 14);
+      color: white;
+      user-select: none !important;
+    }
+    #restart-btn:active{
+      background-color: rgb(153, 136, 136);
+      color: black;
+      outline: 2px solid transparent;
+      box-shadow: inset 3px 3px 2px 1px rgb(36, 36, 36);
+    }
+    #restart-btn h3{
+      user-select: none;
+    }
+    #game {
+      display: none;
+    }
+    #optionSet1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      padding-top: 100px;
+    }
+    #start-btn{
+      padding: 8px 16px;
+      border: 2px solid transparent;
+      outline: 2px solid rgb(172, 169, 169);
+      border-radius: 30px;
+      background: rgb(198, 79, 183);
+      background: linear-gradient(
+        90deg,
+        rgba(198, 79, 183, 1) 0%,
+        rgba(255, 0, 44, 1) 100%
+      );font-size: large;
+      margin: 25px 0px;
+    }
+    #optionSet2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      padding: 10px 0px;
+    }
+    #name{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 10px;
+      margin: 25px 0px;
+    }
+    #name input{
+      width: 35%;
+      padding: 6px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid transparent;
+      border-radius: 10px;
+    }
+    #selector{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 10px;
+      margin: 25px 0px;
+    }
+    #selector select{
+      padding: 6px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid transparent;
+      border-radius: 10px;
+    }
+    #Icon-selector1{
+      width: 90px;
+      padding: 6px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background-color: aliceblue;
+      color: black;
+    }
+    #Icon-selector2{
+      width: 90px;
+      padding: 6px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background-color: aliceblue;
+      color: black;
+    }
+    #border-selector{
+      width: 90px;
+      padding: 6px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid transparent;
+      border-radius: 10px;
+    }
+    #selectIconmodal1{
+      display: none;
+      width: 90%;
+      height: 250px;
+      position: absolute;
+      top: 200px;
+      left: 5%;
+      background-color: rgb(82, 80, 80);
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: 3px 3px 3px 3px rgb(167, 165, 165);
+    }
+    #selectIconmodal2{
+      display: none;
+      width: 90%;
+      height: 250px;
+      position: absolute;
+      top: 200px;
+      left: 5%;
+      background-color:  rgb(82, 80, 80);
+    }
+    #showplayerIcons1{
+      margin: 20px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    #showplayerIcons2{
+      margin: 20px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    #showplayerIcons1 img{
+      width: 50px;
+      height: 50px;
+    }
+    #showplayerIcons2 img{
+      width: 50px;
+      height: 50px;
+    }
+    footer{
+      color: aliceblue;
+      font-size: 20px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+  <body>
+    <div id="menu">
+      <div id="optionSet1">
+      <h1>Tic Tac Toe</h1>
+      <span id="start-btn" onclick="start()">Start Game</span>
+      </div>
+      <hr>
+      <div id="optionSet2">
+        <h1>Options</h1>
+        <div id="name">
+          <input type="text" oninput="updateCookie(`player1`,this.value)" name="playerName1" id="playerName1">
+          <input type="text" oninput="updateCookie(`player2`,this.value)" name="playerName2" id="playerName2">
+        </div>
+        <div id="selector">
+        <span name="icon" id="Icon-selector1" onclick="openModal(1)">Icon 1</span> 
+        <span name="icon" id="Icon-selector2" onclick="openModal(2)">Icon 2</span> 
+        <select name="border" id="border-selector" onchange="updateBorder(this.value)">
+          <option value="b1.webp">Red</option>
+          <option value="b2.webp">Yellow</option>
+          <option value="b4.webp">purple</option>
+          <option value="b3.webp">Blue</option>
+        </select> 
+        </div>
+      </div>
+    </div>
+
+    <div id="game">
+    <header>
+      <h1>Tic Tac Toe</h1>
+      <h3 id="turn">Turn Player: <span id="playernumber">1</span></h3>
+      <h4><span id="win"></span></h4>
+    </header>
+
+    <div class="playerstat">
+      <div id="player1" class="player1">player 1</div>
+      <div id="player2" class="">player 2</div>
+    </div>
+
+    <main id="main">
+      <img src="borderstyle/b1.webp" id="mainimg" />
+      <div id="f1" class="all-img" onclick="checkValues(this)"></div>
+      <div id="c1" class="all-img" onclick="checkValues(this)"></div>
+      <div id="l1" class="all-img" onclick="checkValues(this)"></div>
+      <div id="f2" class="all-img" onclick="checkValues(this)"></div>
+      <div id="c2" class="all-img" onclick="checkValues(this)"></div>
+      <div id="l2" class="all-img" onclick="checkValues(this)"></div>
+      <div id="f3" class="all-img" onclick="checkValues(this)"></div>
+      <div id="c3" class="all-img" onclick="checkValues(this)"></div>
+      <div id="l3" class="all-img" onclick="checkValues(this)"></div>
+    </main>
+    <div id="restart">
+      <span id="restart-btn" onclick="reset()"><h3>Menu</h3></span>
+      <span id="restart-btn" onclick="restart()"><h3>Restart</h3></span>
+    </div>
+    </div>
+
+    <div id="selectIconmodal1">
+      <div id="showplayerIcons1">
+      <img src="playerIcons/1.jpg" class="iconImages1" onclick="getImage1(this.name)" name="1.jpg" alt="" id="playerIcon1"/>
+      <img src="playerIcons/2.jpg" class="iconImages1" onclick="getImage1(this.name)" name="2.jpg" alt="" id="playerIcon2"/>
+      </div>
+    </div>
+    <div id="selectIconmodal2">
+      <div id="showplayerIcons2">
+      <img src="playerIcons/1.jpg" class="iconImages2" onclick="getImage2(this.name)" name="1.jpg" alt="" id="playerIcon2"/>
+      <img src="playerIcons/2.jpg" class="iconImages2" onclick="getImage2(this.name)" name="2.jpg" alt="" id="playerIcon2"/>
+      </div>
+    </div>
+
+    <footer><hr> Made by Four Elements [A.Rehan]</footer>
+  </body>
+  <script>
+    let screenwidth = window.innerWidth; // get device width
+    let screenheight = window.innerHeight; // get device height
+
+    if (screenwidth > screenheight) {
+      screenwidth = (screenheight * 80) / 100;
+    }
+
+    const width = (screenwidth * 80) / 100; // make game board size 80% of the width
+    const main = document.getElementById("main");
+    const innerDivWidth = 3.1; // adding width to inner divs
+    main.style.width = width + "px";
+    main.style.height = width + "px";
+
+    const divs = document.querySelectorAll("main div");
+    divs.forEach((div) => {
+      div.style.width = width / innerDivWidth + "px";
+      div.style.height = width / innerDivWidth + "px";
+    });
+
+   
+  </script>
+
+  <script src="main.js"></script>
+</html>
